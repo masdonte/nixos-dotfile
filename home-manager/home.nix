@@ -27,8 +27,8 @@ imports = [
 
 
 		programs.git = {
-			userName = "Flatbed0220";
-			userEmail = "codeberg.uncross141@slmail.me";
+			userName = "masdonte";
+			userEmail = "poonic54@protonmail.com";
 			delta = {
 				enable = true;
 				options = {
