@@ -77,8 +77,6 @@
 		neovim
 			git
 			wget
-			kitty
-			waybar
 			hyprpaper
 	];
 
