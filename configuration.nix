@@ -1,11 +1,12 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, home-manager, ... }:
 
 {
 	imports =
 		[ # Include the results of the hardware scan.
 		./hardware-configuration.nix
+
 		];
 
 	nix.settings.experimental-features = [ "nix-command" "flakes"];
@@ -44,9 +45,6 @@
 		withUWSM = true;
 	};
 
-
-
-
 	services.printing.enable = true;
 
 # Enable sound.
@@ -64,21 +62,11 @@
 	users.users.reda= {
 		isNormalUser = true;
 		extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-			packages = with pkgs; [
-			tree
-			];
 	};
 
 
 # List packages installed in system profile. To search, run:
 # $ nix search wget
-	environment.systemPackages = with pkgs; [
-# Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-		neovim
-			git
-			wget
-			hyprpaper
-	];
 
 
 # Some programs need SUID wrappers, can be configured further or are
