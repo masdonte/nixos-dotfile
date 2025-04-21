@@ -3,6 +3,7 @@
 imports = [
 ./hyprland.nix
 ./waybar.nix
+./foot.nix
 ];
 
 
@@ -21,7 +22,6 @@ imports = [
 # want to update the value, then make sure to first check the Home Manager
 # release notes.
 	home.stateVersion = "24.11"; # Please read the comment before changing.
-
 # The home.packages option allows you to install Nix packages into your
 # environment.
 
@@ -29,6 +29,7 @@ imports = [
 		programs.git = {
 			userName = "masdonte";
 			userEmail = "poonic54@protonmail.com";
+			enable = true;
 			delta = {
 				enable = true;
 				options = {
@@ -43,34 +44,20 @@ imports = [
 			};
 		};
 
+programs.firefox.enable = true;
+
 		home.packages = with pkgs; [
 
-			foot
 			pamixer
 			bottom
 			zellij
 			zip
 			doas
 			wget
+			networkmanagerapplet
 
 			];
 
-
-#programs.foot.settings = {
-#
-#	{
-#		main = {
-#			term = "xterm-256color";
-#
-#			font = "Fira Code:size=11";
-#			dpi-aware = "yes";
-#		};
-#
-#		mouse = {
-#			hide-when-typing = "yes";
-#		};
-#	}
-#};
 
 
 	home.file = {
