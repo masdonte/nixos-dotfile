@@ -4,13 +4,13 @@ imports = [
 ./hyprland.nix
 ./waybar.nix
 ./foot.nix
+./neovim.nix
+./firefox.nix
 ];
 
 
 
 
-# Home Manager needs a bit of information about you and the paths it should
-# manage.
 	home.username = "reda";
 	home.homeDirectory = "/home/reda";
 
@@ -44,7 +44,8 @@ imports = [
 			};
 		};
 
-programs.firefox.enable = true;
+programs.ripgrep.enable = true;
+programs.tealdeer.enable = true;
 
 		home.packages = with pkgs; [
 
