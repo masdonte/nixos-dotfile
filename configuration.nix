@@ -54,18 +54,17 @@
 		pulse.enable = true;
 	};
 
-# Enable touchpad support (enabled default in most desktopManager).
-# services.libinput.enable = true;
+  users = {
+    defaultUserShell = "/etc/profiles/per-user/reda/bin/zsh";
+    users.reda = {
+      isNormalUser = true;
+      createHome = true;
+      home = "/home/reda";
+      extraGroups = [ "wheel" "users" "audio" "video" "adbusers" ];
+    };
+  };
 
-# Define a user account. Don't forget to set a password with ‘passwd’.
-	users.users.reda= {
-		isNormalUser = true;
-		extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-	};
 
-
-# List packages installed in system profile. To search, run:
-# $ nix search wget
 
 
 # Some programs need SUID wrappers, can be configured further or are
