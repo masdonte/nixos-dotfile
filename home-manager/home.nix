@@ -6,6 +6,7 @@ imports = [
 ./foot.nix
 ./neovim.nix
 ./firefox.nix
+./zsh.nix
 ];
 
 
@@ -44,8 +45,6 @@ imports = [
 			};
 		};
 
-programs.ripgrep.enable = true;
-programs.tealdeer.enable = true;
 
 		home.packages = with pkgs; [
 
@@ -56,6 +55,14 @@ programs.tealdeer.enable = true;
 			doas
 			wget
 			networkmanagerapplet
+			bat
+			libreoffice
+			fzf
+			ncdu
+			skim
+			tealdeer
+			ripgrep
+			eza
 
 			];
 
