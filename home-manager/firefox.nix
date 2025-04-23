@@ -1,6 +1,8 @@
-{pkgs, config, ...}:{
+{pkgs, config, ... }:
 
-	programs.firefox = {
-		enable = true
-		extensions = [
-	};
+{
+  programs.firefox = {
+    enable = true;
+  };
+}
+
