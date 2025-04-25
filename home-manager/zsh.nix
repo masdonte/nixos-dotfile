@@ -30,11 +30,11 @@
 	};
 
       programs.zsh.shellAliases	= {
-		nixup = "pushd /etc/nixos; sudo nix flake update; popd";
+		nixup = "pushd /etc/nixos; doas nix flake update; popd";
 		nixq = "nix-store -q --requisites /run/current-system/sw | wc -l";
-		cleanup = "sudo nix-collect-garbage -d";
+		cleanup = "doas nix-collect-garbage -d";
 		bloat = "nix path-info -Sh /run/current-system";
-		nixhost = "pushd /etc/nixos; sudo nixos-rebuild switch --flake .#nixos ";
+		nixhost = "pushd /etc/nixos; doas nixos-rebuild switch --flake .#nixos ";
 
 
 # Custom packages script

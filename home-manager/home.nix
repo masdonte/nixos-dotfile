@@ -1,19 +1,19 @@
 { config, pkgs, lib, ... }:{
 
-imports = [
-./hyprland.nix
-./waybar.nix
-./foot.nix
-./neovim.nix
-./firefox.nix
-./zsh.nix
-];
+  imports = [
+    ./hyprland.nix
+    ./waybar.nix
+    ./foot.nix
+    ./neovim.nix
+    ./firefox.nix
+    ./zsh.nix
+  ];
 
 
 
 
-	home.username = "reda";
-	home.homeDirectory = "/home/reda";
+  home.username = "reda";
+  home.homeDirectory = "/home/reda";
 
 # This value determines the Home Manager release that your configuration is
 # compatible with. This helps avoid breakage when a new Home Manager release
@@ -22,53 +22,66 @@ imports = [
 # You should not change this value, even if you update Home Manager. If you do
 # want to update the value, then make sure to first check the Home Manager
 # release notes.
-	home.stateVersion = "24.11"; # Please read the comment before changing.
+home.stateVersion = "24.11"; # Please read the comment before changing.
 # The home.packages option allows you to install Nix packages into your
 # environment.
 
+services.udiskie = {
+  enable = true;
+  automount = true;
+};
 
-		programs.git = {
-			userName = "masdonte";
-			userEmail = "poonic54@protonmail.com";
-			enable = true;
-			delta = {
-				enable = true;
-				options = {
-					decorations = {
-						commit-decoration-style = "bold yellow box ul";
-						file-decoration-style = "none";
-						file-style = "bold yellow ul";
-					};
-					features = "decorations";
-					whitespace-error-style = "22 reverse";
-				};
-			};
-		};
-
-
-		home.packages = with pkgs; [
-
-			pamixer
-			bottom
-			zellij
-			zip
-			doas
-			wget
-			networkmanagerapplet
-			bat
-			libreoffice
-			fzf
-			ncdu
-			skim
-			tealdeer
-			ripgrep
-			eza
-
-			];
+programs.git = {
+  userName = "masdonte";
+  userEmail = "poonic54@protonmail.com";
+  enable = true;
+  extraConfig.safe.directory = [
+    "/etc/nixos"
+    "/home/reda"
+  ];
+  delta = {
+    enable = true;
+    options = {
+      decorations = {
+        commit-decoration-style = "bold yellow box ul";
+        file-decoration-style = "none";
+        file-style = "bold yellow ul";
+      };
+      features = "decorations";
+      whitespace-error-style = "22 reverse";
+    };
+  };
+};
 
 
+home.packages = with pkgs; [
 
-	home.file = {
+  pamixer
+  bottom
+  zellij
+  zip
+  doas
+  wget
+  networkmanagerapplet
+  bat
+  libreoffice
+  fzf
+  ncdu
+  skim
+  tealdeer
+  ripgrep
+  eza
+  batmon
+  brightnessctl
+  playerctl
+  signal-desktop-bin
+
+
+];
+
+
+
+home.file = {
 # # Building this configuration will create a copy of 'dotfiles/screenrc' in
 # # the Nix store. Activating the configuration will then make '~/.screenrc' a
 # # symlink to the Nix store copy.
@@ -79,7 +92,7 @@ imports = [
 #   org.gradle.console=verbose
 #   org.gradle.daemon.idletimeout=3600000
 # '';
-	};
+        };
 
 # Home Manager can also manage your environment variables through
 # 'home.sessionVariables'. These will be explicitly sourced when using a
@@ -97,13 +110,10 @@ imports = [
 #
 #  /etc/profiles/per-user/reda/etc/profile.d/hm-session-vars.sh
 #
-	home.sessionVariables = {
-# EDITOR = "emacs";
-	};
 
 # Let Home Manager install and manage itself.
-	programs = {
-		home-manager.enable = true;
-	};
+programs = {
+  home-manager.enable = true;
+};
 
 }
