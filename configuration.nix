@@ -48,12 +48,22 @@
 
 # Enable sound.
 # hardware.pulseaudio.enable = true;
-# OR
-	services.pipewire = {
-		enable = true;
-		pulse.enable = true;
-	};
- 
+  hardware = {
+      bluetooth = {
+        enable = true;
+      };
+    };
+
+      # rtkit is optional but recommended
+      security.rtkit.enable = true;
+
+      services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+      };
+
   users = {
     defaultUserShell = "/etc/profiles/per-user/reda/bin/zsh";
     users.reda = {
@@ -63,8 +73,6 @@
       extraGroups = [ "wheel" "users" "audio" "video" "adbusers" ];
     };
   };
-
-
 
   services.tlp = {
   enable = true;
