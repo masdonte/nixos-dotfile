@@ -65,14 +65,15 @@ home.packages = with pkgs; [
   networkmanagerapplet
   bat
   libreoffice
-  fzf
   ncdu
-  skim
+  skim # rust alt for fzf
+
   tealdeer
   ripgrep
   eza
   batmon
   brightnessctl
+  bluetui
   playerctl
   signal-desktop-bin
 
