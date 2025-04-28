@@ -6,7 +6,11 @@
 		vimAlias = true;
 
 		plugins = with pkgs.vimPlugins; [
-# Language servers
 			vim-nix];
 	};
-		    }
+
+                    programs.helix = {
+                      enable = true;
+                    };
+                  }
+
