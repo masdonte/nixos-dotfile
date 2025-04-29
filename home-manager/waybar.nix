@@ -75,8 +75,8 @@
       height = 30;
       layer = "top";
       tray = { spacing = 10; };
-      modules-center = [ "sway/window" ];
-      modules-left = [ "sway/workspaces" "sway/mode" ];
+      modules-center = [ "hyprland/window" ];
+      modules-left = [ "hyprland/workspaces" "hyprland/mode" ];
       modules-right = [
         "pulseaudio"
         "network"
@@ -84,6 +84,7 @@
         "memory"
         "temperature"
         "clock"
+        "battery"
         "tray"
       ];
       battery = {
@@ -140,4 +141,8 @@
       };
     }];
   };
+
+
+
+  
 }
