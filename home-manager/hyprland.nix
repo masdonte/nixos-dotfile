@@ -28,7 +28,7 @@
       "$mod1" = "SUPER";
       "$mod2" = "SUPERSHIFT";
       "$terminal" = "foot";
-      "$browser" = "firefox";
+      "$browser" = "librewolf";
       "$editor" = "neovim";
       "$menu" = "tofi";
 
@@ -51,7 +51,6 @@
       exec-once = [
         "foot &"
         "nm-applet &"
-        "firefox &"
         "wl-paste --watch cliphist store &"
       ];
 
