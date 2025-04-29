@@ -7,6 +7,7 @@
     ./neovim.nix
     ./firefox.nix
     ./zsh.nix
+    ./mpv.nix
   ];
 
 
