@@ -3,56 +3,83 @@
 { config, lib, pkgs, inputs, home-manager, ... }:
 
 {
-	imports =
-		[ # Include the results of the hardware scan.
-		./hardware-configuration.nix
+  imports =
+    [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
 
-		];
+  ];
 
-	nix.settings.experimental-features = [ "nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes"];
 
-	nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
-	home-manager = {
-		extraSpecialArgs = {inherit inputs;};
-		users = {
-			"reda" = import ./home-manager/home.nix;
-		};
-	};
-
-
-	boot.loader.systemd-boot.enable = true;
-	boot.loader.efi.canTouchEfiVariables = true;
-
-	networking.hostName = "nixos"; # Define your hostname.
-		networking.networkmanager.enable = true;
+  home-manager = {
+    extraSpecialArgs = {inherit inputs;};
+    users = {
+      "reda" = import ./home-manager/home.nix;
+    };
+  };
 
 
-	time.timeZone = "Europe/Paris";
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  networking.hostName = "nixos"; # Define your hostname.
+  networking.networkmanager.enable = true;
+
+  
+  fonts = {
+    fontDir.enable = true;
+
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      lmodern
+      font-awesome
+      noto-fonts-emoji
+      material-design-icons
+      nerd-fonts.fantasque-sans-mono
+      nerd-fonts.jetbrains-mono
+    ];
+
+    fontconfig = {
+      enable = true;
+      includeUserConf = true;
+      cache32Bit = true;
+      defaultFonts = {
+        emoji = [ "Noto Color Emoji" ];
+        serif = [ "JetBrainsMono Nerd Font" ];
+        sansSerif = [ "JetBrainsMono Nerd Font" ];
+        monospace = [ "FantasqueSansMono Nerd Font mono" ];
+      };
+    };
+  };
 
 
-	i18n.defaultLocale = "fr_FR.UTF-8";
-	console = {
-		font = "Lat2-Terminus16";
-		keyMap = "fr";
-	};
+  time.timeZone = "Europe/Paris";
 
 
-	programs.hyprland = {
-		enable = true;
-		xwayland.enable = true;
-		withUWSM = true;
-	};
+  i18n.defaultLocale = "fr_FR.UTF-8";
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "fr";
+  };
 
-	services.printing.enable = true;
+
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+    withUWSM = true;
+  };
+
+  services.printing.enable = true;
 
 # Enable sound.
 # hardware.pulseaudio.enable = true;
-  hardware = {
-      bluetooth = {
-        enable = true;
-      };
-    };
+hardware = {
+  bluetooth = {
+    enable = true;
+  };
+};
 
       # rtkit is optional but recommended
       security.rtkit.enable = true;
@@ -64,29 +91,29 @@
         pulse.enable = true;
       };
 
-  users = {
-    defaultUserShell = "/etc/profiles/per-user/reda/bin/zsh";
-    users.reda = {
-      isNormalUser = true;
-      createHome = true;
-      home = "/home/reda";
-      extraGroups = [ "wheel" "users" "audio" "video" "adbusers" ];
-    };
-  };
+      users = {
+        defaultUserShell = "/etc/profiles/per-user/reda/bin/zsh";
+        users.reda = {
+          isNormalUser = true;
+          createHome = true;
+          home = "/home/reda";
+          extraGroups = [ "wheel" "users" "audio" "video" "adbusers" ];
+        };
+      };
 
-  services.tlp = {
-  enable = true;
-  settings = {
-    CPU_SCALING_GOVERNOR_ON_AC = "performance";
-    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      services.tlp = {
+        enable = true;
+        settings = {
+          CPU_SCALING_GOVERNOR_ON_AC = "performance";
+          CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-    CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-    CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+          CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+          CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
 
-    CPU_MIN_PERF_ON_AC = 0;
-    CPU_MAX_PERF_ON_AC = 100;
-    CPU_MIN_PERF_ON_BAT = 0;
-    CPU_MAX_PERF_ON_BAT = 20;
+          CPU_MIN_PERF_ON_AC = 0;
+          CPU_MAX_PERF_ON_AC = 100;
+          CPU_MIN_PERF_ON_BAT = 0;
+          CPU_MAX_PERF_ON_BAT = 20;
 
     # Optional helps save long term battery health
     START_CHARGE_THRESH_BAT0 = 40; # 40 and bellow it starts to charge
@@ -117,13 +144,13 @@ security.doas.extraRules = [{
 # List services that you want to enable:
 
 # Enable the OpenSSH daemon.
-	services.openssh.enable = true;
+services.openssh.enable = true;
 
 # Open ports in the firewall.
 # networking.firewall.allowedTCPPorts = [ ... ];
 # networking.firewall.allowedUDPPorts = [ ... ];
 # Or disable the firewall altogether.
-	networking.firewall.enable = false;
+networking.firewall.enable = false;
 
 # Copy the NixOS configuration file and link it from the resulting system
 # (/run/current-system/configuration.nix). This is useful in case you
@@ -147,7 +174,7 @@ security.doas.extraRules = [{
 # and migrated your data accordingly.
 #
 # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-	system.stateVersion = "24.11"; # Did you read the comment?
+system.stateVersion = "24.11"; # Did you read the comment?
 
 }
 
