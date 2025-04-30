@@ -58,6 +58,7 @@ programs.git = {
 home.packages = with pkgs; [
 
   pamixer
+  croc
   bottom
   zellij
   zip
