@@ -11,6 +11,8 @@
 
   programs.qutebrowser = {
     enable = true;
+    extraConfig = (builtins.readFile ./gruvbox.py);
+
   };
 
 
