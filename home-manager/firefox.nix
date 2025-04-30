@@ -9,6 +9,10 @@
 
   };
 
+  programs.qutebrowser = {
+    enable = true;
+  };
+
 
 }
 

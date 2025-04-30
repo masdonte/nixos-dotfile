@@ -1,7 +1,6 @@
 {config,  pkgs, lib, ...}:
 
 {
-
   programs.tofi = {
     enable = true;
     settings = { 
@@ -29,6 +28,7 @@
       "$mod2" = "SUPERSHIFT";
       "$terminal" = "foot";
       "$browser" = "librewolf";
+      "$browser1" = "qutebrowser";
       "$editor" = "neovim";
       "$menu" = "tofi";
 
@@ -80,6 +80,7 @@
         "$mod1, D, exec, tofi-drun | xargs hyprctl dispatch exec --"
         "$mod1, B, exec, $browser"
         "$mod1, A, exec, libreoffice"
+        "$mod1, C, exec, $browser1"
         "$mod1, H, movefocus, l"
         "$mod1, L, movefocus, r"
         "$mod1, K, movefocus, u"
