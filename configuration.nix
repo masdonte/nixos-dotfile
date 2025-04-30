@@ -13,11 +13,26 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  nix = {
+      gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+  };
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
     users = {
       "reda" = import ./home-manager/home.nix;
     };
+  };
+
+    /* ---Set environment variables--- */
+  environment.variables = {
+    NIXOS_CONFIG_DIR = "/etc/nixos";
+    EDITOR = "nvim";
+    TERMINAL = "foot";
+    BROWSER = "librewolf";
   };
 
 
