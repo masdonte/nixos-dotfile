@@ -14,12 +14,13 @@
   nixpkgs.config.allowUnfree = true;
 
   nix = {
-      gc = {
+    gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
   };
+
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
     users = {
@@ -27,7 +28,7 @@
     };
   };
 
-    /* ---Set environment variables--- */
+  /* ---Set environment variables--- */
   environment.variables = {
     NIXOS_CONFIG_DIR = "/etc/nixos";
     EDITOR = "nvim";
@@ -42,7 +43,7 @@
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
 
-  
+
   fonts = {
     fontDir.enable = true;
 
