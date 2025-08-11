@@ -1,6 +1,9 @@
 {config,  pkgs, lib, ...}:
 
 {
+
+
+
   programs.tofi = {
     enable = true;
     settings = { 
@@ -33,7 +36,7 @@
       "$menu" = "tofi";
 
       monitor = [
-        "eDP-1, 1920x1080@60, 0x0, 1"
+        "eDP-1, 1920x1080@60, 0x0, 1,"
 
       ];
       env = [
