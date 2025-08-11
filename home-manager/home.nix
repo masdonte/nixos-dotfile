@@ -40,6 +40,7 @@ programs.git = {
     "/etc/nixos"
     "/home/reda"
   ];
+
   delta = {
     enable = true;
     options = {
@@ -57,6 +58,7 @@ programs.git = {
 
 home.packages = with pkgs; [
 
+  yt-dlp
   pamixer
   croc
   bottom
@@ -70,6 +72,8 @@ home.packages = with pkgs; [
   ncdu
   skim # rust alt for fzf
 
+
+  wbg
   tealdeer
   ripgrep
   eza
@@ -77,7 +81,6 @@ home.packages = with pkgs; [
   brightnessctl
   bluetui
   playerctl
-  signal-desktop-bin
 
 
 ];
