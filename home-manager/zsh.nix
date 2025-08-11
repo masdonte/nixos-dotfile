@@ -13,13 +13,13 @@
 		autosuggestion.enable = true;
 		autocd = true;
 		history = {
-			save = 1000;
-			size = 1000;
+			save = 10000;
+			size = 10000;
 			path = "/home/reda/.cache/zsh/history";
 			expireDuplicatesFirst = true;
 		};
 
-		initExtra = ''
+                initContent = ''
 			autoload -U colors && colors # Load colors
 			PS1="%B%{$fg[magenta]%}[%{$fg[cyan]%}%n%{$fg[blue]%} %~%{$fg[magenta]%}]%{$reset_color%}$%b "
 			setopt correct
@@ -30,11 +30,11 @@
 	};
 
       programs.zsh.shellAliases	= {
-		nixup = "pushd /etc/nixos; doas nix flake update; popd";
+		nixup = "pushd /home/reda/.local/share/nixos-dotfiles; doas nix flake update; popd";
 		nixq = "nix-store -q --requisites /run/current-system/sw | wc -l";
 		cleanup = "doas nix-collect-garbage -d";
 		bloat = "nix path-info -Sh /run/current-system";
-		nixhost = "pushd /etc/nixos; doas nixos-rebuild switch --flake .#nixos ";
+		nixhost = "pushd /home/reda/.local/share/nixos-dotfiles ; sudo nixos-rebuild switch --flake .#nixos ";
 
 
 # Custom packages script
