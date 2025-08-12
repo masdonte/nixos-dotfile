@@ -7,6 +7,7 @@
       main = 
       {
         font = "monospace:size=10";
+        term = "xterm-256color";
       };
       cursor = {
         style = "beam";
