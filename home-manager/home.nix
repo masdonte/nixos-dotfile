@@ -16,78 +16,71 @@
   home.username = "reda";
   home.homeDirectory = "/home/reda";
 
-# This value determines the Home Manager release that your configuration is
-# compatible with. This helps avoid breakage when a new Home Manager release
-# introduces backwards incompatible changes.
-#
-# You should not change this value, even if you update Home Manager. If you do
-# want to update the value, then make sure to first check the Home Manager
-# release notes.
-home.stateVersion = "24.11"; # Please read the comment before changing.
-# The home.packages option allows you to install Nix packages into your
-# environment.
+  home.stateVersion = "24.11"; # Please read the comment before changing.
 
-services.udiskie = {
-  enable = true;
-  automount = true;
-};
-
-programs.git = {
-  userName = "masdonte";
-  userEmail = "poonic54@protonmail.com";
-  enable = true;
-  extraConfig.safe.directory = [
-    "/etc/nixos"
-    "/home/reda"
-  ];
-
-  delta = {
+  services.udiskie = {
     enable = true;
-    options = {
-      decorations = {
-        commit-decoration-style = "bold yellow box ul";
-        file-decoration-style = "none";
-        file-style = "bold yellow ul";
+    automount = true;
+  };
+
+  programs.git = {
+    userName = "masdonte";
+    userEmail = "poonic54@protonmail.com";
+    enable = true;
+    extraConfig.safe.directory = [
+      "/etc/nixos"
+      "/home/reda"
+    ];
+
+    delta = {
+      enable = true;
+      options = {
+        decorations = {
+          commit-decoration-style = "bold yellow box ul";
+          file-decoration-style = "none";
+          file-style = "bold yellow ul";
+        };
+        features = "decorations";
+        whitespace-error-style = "22 reverse";
       };
-      features = "decorations";
-      whitespace-error-style = "22 reverse";
     };
   };
-};
+
+  programs.onlyoffice = {
+    enable = true;
+  };
+
+  home.packages = with pkgs; [
+
+    yt-dlp
+    pamixer
+    croc
+    bottom
+    zellij
+    zip
+    doas
+    wget
+    networkmanagerapplet
+    bat
+    ncdu
+    skim # rust alt for fzf
 
 
-home.packages = with pkgs; [
-
-  yt-dlp
-  pamixer
-  croc
-  bottom
-  zellij
-  zip
-  doas
-  wget
-  networkmanagerapplet
-  bat
-  libreoffice
-  ncdu
-  skim # rust alt for fzf
+    wbg # wallpaper
+    tealdeer
+    ripgrep
+    eza
+    batmon
+    brightnessctl
+    bluetui
+    playerctl
 
 
-  wbg
-  tealdeer
-  ripgrep
-  eza
-  batmon
-  brightnessctl
-  bluetui
-  playerctl
-
-
-];
+  ];
 
 
 
-home.file = {
+  home.file = {
 # # Building this configuration will create a copy of 'dotfiles/screenrc' in
 # # the Nix store. Activating the configuration will then make '~/.screenrc' a
 # # symlink to the Nix store copy.
