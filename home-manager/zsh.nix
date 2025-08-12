@@ -25,6 +25,8 @@
 			setopt correct
 			setopt nobeep
 			stty stop undef # Disable ctrl-s to freeze terminal.
+                  bindkey '^H' backward-kill-word
+                  bindkey '^[[3;5~' kill-word
 			'';
 
 	};
@@ -58,6 +60,7 @@
 		df = "df -h";
 		free = "free -m";
 		jctl = "journalctl -p 3 -xb";
+                fzf = "sk";
 
 
 		addup = "git add -u";
