@@ -42,6 +42,9 @@
     enable = true;
   };
 
+  programs.cmus = {
+    enable = true;
+  };
   home.packages = with pkgs; [
 
     yt-dlp
