@@ -1,12 +1,8 @@
 {pkgs, config, ... }:
 
 {
-  programs.librewolf = {
+  programs.firefox = {
     enable = true;
-    settings = {
-      "webgl.disabled" = true; # use Canvas Blocker if "true"
-    };
-
   };
 
   programs.qutebrowser = {

@@ -1,31 +1,31 @@
-{config,  pkgs, lib, ...}:
+{config,  pkgs, lib, catppuccin, ...}:
 
 {
   home.pointerCursor = {
     gtk.enable = true;
     # x11.enable = true;
     package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
+    name = "Bibata-Modern-Ice";
     size = 16;
+  };
+
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    firefox.enable = true;
+    firefox.force = true;
+    firefox.flavor = "mocha";
+
   };
 
   gtk = {
     enable = true;
-
-    theme = {
-      package = pkgs.flat-remix-gtk;
-      name = "Flat-Remix-GTK-Grey-Darkest";
+    cursorTheme = {
+      package = pkgs.capitaine-cursors-themed;
+      name = "Capitaine Cursors (Gruvbox)";
+      size = 24;
     };
 
-    iconTheme = {
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita";
-    };
-
-    font = {
-      name = "Sans";
-      size = 11;
-    };
   };
 
   programs.tofi = {
@@ -54,7 +54,7 @@
       "$mod1" = "SUPER";
       "$mod2" = "SUPERSHIFT";
       "$terminal" = "foot";
-      "$browser" = "librewolf";
+      "$browser" = "firefox";
       "$browser1" = "qutebrowser";
       "$editor" = "neovim";
       "$menu" = "tofi";
@@ -83,51 +83,51 @@
 
       misc = {
         force_default_wallpaper = 0; # Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo = true; # If true disables the random hyprland logo / anime girl background. (
-        };
-        general = {
-          allow_tearing = false;
-          border_size = 2;
-          gaps_in = 8;
-          gaps_out = 8;
-          layout = "dwindle";
-        };
+        disable_hyprland_logo = true; # If true disables the random hyprland logo / anime girl background. 
+      };
+      general = {
+        allow_tearing = false;
+        border_size = 2;
+        gaps_in = 8;
+        gaps_out = 8;
+        layout = "dwindle";
+      };
 
-        animations = {
+      animations = {
+        enabled = true;
+      };
+      decoration = {
+        rounding = 10;
+        rounding_power = 2;
+        active_opacity = 1.0;
+        inactive_opacity = 1.0;
+        blur = {
           enabled = true;
+          size = 3;
+          passes = 1;
+          vibrancy = 0.1696;
         };
-        decoration = {
-          rounding = 10;
-          rounding_power = 2;
-          active_opacity = 1.0;
-          inactive_opacity = 1.0;
-          blur = {
-            enabled = true;
-            size = 3;
-            passes = 1;
-            vibrancy = 0.1696;
-          };
-        };
+      };
 
 
-        input = {
-          kb_layout = "fr";
-          kb_options = "caps:swapescape";
-          accel_profile = "flat";
-          repeat_rate = 150;
-          repeat_delay = 300;
-          touchpad = {
-            natural_scroll = true;
-          };
-
+      input = {
+        kb_layout = "fr";
+        kb_options = "caps:swapescape";
+        accel_profile = "flat";
+        repeat_rate = 150;
+        repeat_delay = 300;
+        touchpad = {
+          natural_scroll = true;
         };
 
-        bind = [
-          "$mod1, Q, killactive"
-          "$mod1, D, exec, tofi-drun | xargs hyprctl dispatch exec --"
-          "$mod1, B, exec, $browser"
-          "$mod1, A, exec,  onlyoffice-desktopeditors"
-          "$mod1, C, exec, $browser1"
+      };
+
+      bind = [
+        "$mod1, Q, killactive"
+        "$mod1, D, exec, tofi-drun | xargs hyprctl dispatch exec --"
+        "$mod1, B, exec, $browser"
+        "$mod1, A, exec,  onlyoffice-desktopeditors"
+        "$mod1, C, exec, $browser1"
 
           # Move focus
 
@@ -143,6 +143,8 @@
           "$mod2, K, movewindow, u"
           "$mod2, J, movewindow, d"
 
+          "$mod1, F, fullscreenstate, 1 0 " # Make client maximize"
+          "$mod2, F, fullscreenstate, 0 2" # Make app-only fullscreen (fakefullscreen)
 
           "$mod2, Q, exec, wlogout"
 

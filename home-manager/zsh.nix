@@ -8,8 +8,8 @@
 	programs.eza.enable = true;
 	programs.zsh = {
 		enable = true;
-		dotDir = ".config/zsh";
 		enableCompletion = true;
+                dotDir = ".config/zsh";
 		autosuggestion.enable = true;
 		autocd = true;
 		history = {
