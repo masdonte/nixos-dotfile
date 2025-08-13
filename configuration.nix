@@ -21,6 +21,8 @@
     };
   };
 
+  security.pam.services.swaylock = {};
+
   home-manager = {
     extraSpecialArgs = {inherit inputs;};
     users = {
