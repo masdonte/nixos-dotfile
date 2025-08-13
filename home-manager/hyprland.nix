@@ -27,6 +27,9 @@
     };
 
   };
+  services.cliphist = {
+    enable = true;
+  };
 
   programs.tofi = {
     enable = true;
@@ -78,6 +81,7 @@
       exec-once = [
         "foot &"
         "nm-applet &"
+        "wl-paste --type text --watch cliphist store &"
         "wbg /home/reda/pix/pix1.png &"
       ];
 
@@ -128,6 +132,19 @@
         "$mod1, B, exec, $browser"
         "$mod1, A, exec,  onlyoffice-desktopeditors"
         "$mod1, C, exec, $browser1"
+"$mod1, ampersand, workspace,  1"
+"$mod1, eacute, workspace, 2"
+"$mod1, quotedbl, workspace, 3"
+"$mod1, apostrophe, workspace, 4"
+"$mod1, parenleft, workspace, 5"
+"$mod1, egrave, workspace, 6"
+
+"$mod2, ampersand, movetoworkspace, 1"
+"$mod2, eacute, movetoworkspace, 2"
+"$mod2, quotedbl, movetoworkspace, 3"
+"$mod2, apostrophe, movetoworkspace, 4"
+"$mod2, parenleft, movetoworkspace, 5"
+"$mod2, egrave, movetoworkspace, 6"
 
           # Move focus
 
@@ -136,6 +153,9 @@
           "$mod1, L, movefocus, r"
           "$mod1, K, movefocus, u"
           "$mod1, J, movefocus, d"
+
+          # clipboard
+          "$mod1, V, exec, cliphist list | tofi | cliphist decode | wl-copy"
 
           # Move active window
           "$mod2, H, movewindow, l"
