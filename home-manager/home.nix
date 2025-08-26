@@ -12,7 +12,6 @@
 
 
 
-
   home.username = "reda";
   home.homeDirectory = "/home/reda";
 
@@ -69,6 +68,7 @@
     brightnessctl
     bluetui
     playerctl
+    wl-clipboard # for wl-copy
 
 
   ];
