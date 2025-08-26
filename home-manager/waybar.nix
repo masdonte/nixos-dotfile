@@ -69,6 +69,7 @@
 #idle_inhibitor,
 #pulseaudio,
 #pulseaudio_slider,
+#battery
 #network,
 #language {
       color: #161320;
@@ -80,7 +81,6 @@
       }
 
       /* Separation to the left */
-#custom-archicon,
 #cpu,
 #idle_inhibitor {
       margin-left: 5px;
@@ -111,9 +111,18 @@
       background: #ABE9B3;
       }
 
+#battery  {
+      background: #FAF0E6;
+     margin-left: 5px;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+
+      }
+
 #cpu {
       background: #96CDFB;
       }
+
 
 #memory {
       background: #DDB6F2;
@@ -223,6 +232,7 @@
       tray = { spacing = 10; };
       modules-center = [ "hyprland/window" ];
       modules-left = [ "hyprland/workspaces" "hyprland/mode" "pulseaudio"
+      "battery"
     ];
     modules-right = [
       "network"
@@ -230,7 +240,6 @@
       "memory"
       "temperature"
       "clock"
-      "battery"
       "tray"
     ];
     battery = {
