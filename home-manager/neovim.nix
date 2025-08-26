@@ -1,16 +1,24 @@
 {config, pkgs, ...}:{
 
-	programs.neovim = {
-		enable = true;
-		viAlias = true;
-		vimAlias = true;
+  programs.nvf = {
+    enable = true;
+    settings = {
+      vim = {
+        viAlias = false;
+        vimAlias = true;
+        lsp.enable = true;
 
-		plugins = with pkgs.vimPlugins; [
-			vim-nix];
-	};
+        telescope.enable = true;
+        statusline.lualine.enable = true;
 
-                    programs.helix = {
-                      enable = true;
-                    };
-                  }
+        languages = {
+          nix.enable = true;
+        };
+      };
+
+
+    };
+  }
+  ;
+}
 
