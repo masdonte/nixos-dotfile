@@ -50,6 +50,7 @@
     pamixer
     croc
     bottom
+    duf # alternative to df -H 
     zellij
     zip
     doas
