@@ -57,7 +57,7 @@
 		ip = "ip --color=auto";
 
 # Adding flags
-		df = "df -h";
+		df = "duf";
 		free = "free -m";
 		jctl = "journalctl -p 3 -xb";
                 fzf = "sk";
